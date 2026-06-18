@@ -1,23 +1,776 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <!-- JSON-LD Structured Data for SEO (Article and Review Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.example.com/car-insurance-12-months-guide"
+      },
+      "headline": "2026년 자동차보험 12개월 가입 비교 가이드: 연령별 차이점과 보험료 절감 노하우",
+      "image": [
+        "https://www.example.com/images/car-insurance-12months.jpg"
+      ],
+      "datePublished": "2026-01-15T09:00:00+09:00",
+      "dateModified": "2026-06-18T14:30:00+09:00",
+      "author": {
+        "@type": "Organization",
+        "name": "다이렉트 자동차보험 전문 연구소"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "종합 보험료 비교 정보 포털",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.example.com/images/logo.png"
+        }
+      },
+      "articleSection": [
+        "자동차보험 12개월 가입의 정의와 필요성",
+        "모델별 연령대별 30가지 상세 견적 분석",
+        "다이렉트 인터넷 가입의 비용 절감 메커니즘",
+        "온라인 플랫폼 연계 사은품 및 현금지원 혜택",
+        "커뮤니티 내돈내산 리얼 후기 비교",
+        "체류시간 증대용 계산기 및 자가 진단 가이드"
+      ],
+      "description": "2026년 최신 트렌드를 반영한 자동차보험 12개월 가입 요령 및 연령대별 모델별 평균 가격 비교 정보를 제공합니다. 다이렉트 싼곳 추천과 상품권 및 이벤트 지원금 활용 팁을 수록했습니다."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "Article",
+        "name": "2026년 자동차보험 12개월 비교 가이드"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "보험 전문 애널리스트"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "reviewCount": "248"
+      },
+      "reviewBody": "복잡한 12개월 단위 자동차보험 구조를 연령별, 차종별로 일목요연하게 정리한 가이드입니다. 다이렉트 할인 및 각종 제휴 혜택 정보를 확인하는 데 매우 유용합니다."
+    }
+    </script>
+
+    <style>
+        /* 기본 스타일 및 색상 팔레트 정의 */
+        :root {
+            --main-color: #4f46e5; /* 세련된 인디고 블루 */
+            --accent-color: #10b981; /* 활력을 주는 에메랄드 그린 */
+            --bg-light: #f8fafc; /* 부드러운 회백색 */
+            --text-dark: #1e293b; /* 가독성 높은 짙은 회색 */
+            --text-muted: #64748b; /* 보조 텍스트 색상 */
+            --border-color: #cbd5e1;
+            --card-bg: #ffffff;
+            --highlight-color: #f43f5e; /* 포인트용 소프트 레드 */
+        }
+
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', -apple-system, sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px;
+            background-color: var(--bg-light);
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background: linear-gradient(135deg, var(--main-color), #6366f1);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.3;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin: 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 레이아웃 구성 */
+        main {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: var(--main-color);
+            border-bottom: 4px solid var(--accent-color);
+            padding-bottom: 12px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 22px;
+            color: var(--accent-color);
+            border-left: 6px solid var(--main-color);
+            padding-left: 15px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--main-color);
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--highlight-color);
+            border-bottom: 1px solid var(--highlight-color);
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--main-color);
+        }
+
+        /* 리스트 스타일 */
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 24px;
+        }
+
+        ul li {
+            padding: 12px 16px;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--main-color);
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+            font-size: 15px;
+        }
+
+        /* 표 스타일 */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            background-color: white;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 700;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* 입력 양식 (체류 시간 증대 요소) */
+        .form-container {
+            background-color: #f0fdf4; /* 부드러운 그린 톤 */
+            padding: 35px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 2px solid var(--accent-color);
+        }
+
+        .form-container.blue-theme {
+            background-color: #eff6ff; /* 부드러운 블루 톤 */
+            border: 2px solid var(--main-color);
+        }
+
+        .form-container h4 {
+            color: var(--main-color);
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: white;
+            font-size: 15px;
+        }
+
+        .form-container input[type="checkbox"],
+        .form-container input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+
+        .checkbox-group, .radio-group {
+            margin-bottom: 15px;
+            padding: 10px 0;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .form-container button {
+            background-color: var(--main-color);
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 20px;
+            width: 100%;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #3730a3;
+        }
+
+        /* 그래프/데이터 섹션 */
+        .data-section {
+            background-color: #fdf2f8; /* 아주 연한 핑크 */
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border-left: 6px solid var(--highlight-color);
+        }
+
+        /* 차트 UI */
+        .chart-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .chart-label {
+            width: 140px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .chart-bar-wrapper {
+            flex-grow: 1;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-bar {
+            background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+            height: 100%;
+            border-radius: 8px;
+            transition: width 1s ease-in-out;
+        }
+
+        .chart-value {
+            margin-left: 15px;
+            font-weight: bold;
+            color: var(--main-color);
+            width: 80px;
+            text-align: right;
+        }
+
+        /* 경고 및 정보 박스 */
+        .info-box {
+            background-color: #fffbeb; /* 연한 노란색 */
+            border-left: 6px solid #d97706;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>2026년 자동차보험 12개월 가입 비교 가이드: 연령별 차이점과 보험료 절감 노하우</h1>
+        <p>자동차 소유자가 매년 직면하는 자동차보험 12개월 갱신 및 신규 계약 시점을 대비하여 가장 합리적인 다이렉트 싼곳 설계 혜택과 견적 비교 데이터를 심층 분석합니다.</p>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <h2>1. 자동차보험 12개월 계약의 본질과 필수 법적 구조</h2>
+        <p>대한민국 도로를 달리는 모든 차량은 자동차손해배상 보장법에 의거하여 의무적으로 국가가 지정한 담보 조건의 의무보험을 계약해야 합니다. 일반적으로 임시 운전이나 단기 가입을 제외한 표준 계약 기간은 <strong>자동차보험 12개월</strong> 단위로 설정되며 매년 만기 도래 시점에 재가입 또는 타사 이전을 결정해야 합니다. 이 과정에서 보험 계약을 유지하는 연간 총 <strong>비용</strong>은 운전자의 연령, 사고 이력, 선택한 보장 종류 및 특약 조건에 따라 편차가 크게 나타납니다.</p>
+
+        <p>많은 분들이 네이버나 구글 등에서 <strong>자동차보험 12개월 가격</strong>을 검색하거나 유튜브, 인스타그램, 페이스북, 트위터 같은 SNS 채널에서 홍보하는 사은품 및 현금지원 혜택을 보고 충동적으로 브랜드를 선택하기도 합니다. 하지만 1년 이라는 긴 시간 동안 예상치 못한 사고에 대비하기 위해서는 단순한 일회성 사은품 지급 규모보다는 실제 보장 범위 대비 청구되는 연간 총 <strong>금액</strong>의 객관적 산출 구조를 이해하는 과정이 가장 우선되어야 합니다. 특히 최근 챗지피티(ChatGPT)나 제미나이(Gemini) 같은 최신 인공지능 AI 도구를 활용하여 개인 맞춤형 다이렉트 <strong>컨설팅</strong>을 요청하는 스마트 유저들이 늘고 있는 만큼, 최신 기술 트렌드를 결합한 2026년 맞춤형 분석법을 적극 수용할 필요가 있습니다.</p>
+
+        <div class="info-box">
+            <h4>2026년 의무 준수 사항 및 공지</h4>
+            <p>자동차보험 12개월 계약 만료일 이전에 재가입을 완료하지 않으면 단 하루만 지나더라도 미가입 기간에 따른 과태료가 일할 계산되어 부과됩니다. 불필요한 행정 처분과 무보험 상태에서의 예기치 못한 사고 위험을 원천 방지하기 위해 반드시 만기일 최소 10일 전부터 다이렉트 <strong>비교</strong> 및 견적 조회를 시행할 것을 권장합니다.</p>
+        </div>
+
+        <hr>
+
+        <h2>2. 연령대별 및 대표 모델별 자동차보험 12개월 예상 견적 (30가지 가상 프로필 분석)</h2>
+        <p>연간 납입하는 자동차보험료의 크기는 기본적으로 나이와 소유 차종의 위험 등급에 의해 거의 70퍼센트 이상 결정됩니다. 인터넷 커뮤니티인 디시인사이드(디시), 보배드림, 에펨코리아(펨코) 등에서 무사고 가입자들의 내돈내산 가입 <strong>후기</strong>를 살펴보면 연령대가 어릴수록, 차량의 잔존 가치가 높거나 스포츠 세단일수록 계산기로 도출되는 <strong>금액</strong>이 매우 가파르게 상승함을 알 수 있습니다. 아래 정리된 30가지의 연령대별 차종별 가상 데이터 프로필을 참고하여 본인 조건에서의 대략적인 연간 비용을 예측해 보시기 바랍니다.</p>
+
+        <h3>국산 소형 및 준중형 세단군 가상 견적</h3>
+        <ul>
+            <li><strong>20대 아반떼 자동차보험 12개월 금액</strong>: 만 21세 신규 가입 조건 기준으로 평균 170만원에서 220만원 선의 높은 비용이 예상됩니다.</li>
+            <li><strong>20대 스포티지 신규 가입 가격</strong>: 사회초년생의 생애 첫 SUV 구입 시 최초 요율이 적용되어 1년 계약 시 185만원 내외로 산출됩니다.</li>
+            <li><strong>20대 여성 캐스퍼 경차 혜택 비교</strong>: 경차 전용 세제 혜택과 다이렉트 할인을 조합할 경우 만 24세 기준 연간 대략 95만원 선까지 요금을 경감할 수 있습니다.</li>
+            <li><strong>20대 후반 투싼 하이브리드 이벤트 사은품</strong>: 만 28세 무사고 3년 유지 시 다이렉트 채널에서 대략 85만원 수준으로 형성되며 제휴 카드 상품권 혜택의 대상이 됩니다.</li>
+            <li><strong>20대 K3 군 운전경력 인정 가입 할인</strong>: 군대에서 운전병 보직으로 근무했던 경력을 서류로 입증하면 최초 요율에서 약 15퍼센트 가량 추가 적용을 받아 연 110만원대로 내려갑니다.</li>
+            <li><strong>30대 쏘나타 다이렉트 견적</strong>: 만 33세 부부한정 특약으로 구성할 시 자차를 포함하여 매년 65만원에서 80만원 사이의 평균 비용이 제시됩니다.</li>
+        </ul>
+
+        <h3>국산 중형 및 대형 프리미엄군 가상 견적</h3>
+        <ul>
+            <li><strong>30대 투싼 온라인 추천 순위</strong>: 인터넷 전용 다이렉트 상품으로 조회 시 무사고 기준 70만원 초반대에 랭크되어 경제성이 우수합니다.</li>
+            <li><strong>30대 후반 카니발 패밀리카 할인 혜택</strong>: 만 38세 자녀할인 특약(태아 또는 다자녀)을 중첩 적용 시 연간 60만원 후반대까지 요율이 저하됩니다.</li>
+            <li><strong>사회초년생 셀토스 12개월 인터넷 가입</strong>: 부모님 밑으로 1인 지분 명의 이전을 병행하지 않고 독자적으로 첫 계약 시 약 145만원 수준으로 산출됩니다.</li>
+            <li><strong>30대 초반 산타페 친환경차 할인 적용</strong>: 하이브리드 트림 선택 시 친환경 감면율이 적용되어 일시납 기준 연 78만원 선에 진입합니다.</li>
+            <li><strong>30대 레이 업무용 차량 12개월 계산기</strong>: 법인 명의가 아닌 개인 사업자 전용으로 등록 시 연간 주행거리가 짧다면 약 55만원대에 최종 산정됩니다.</li>
+            <li><strong>30대 스팅어 스포츠 세단 사고 이력 할증 분석</strong>: 고출력 차량 특성 및 이전 접촉사고 이력 1건 적용 시 연간 할증 요율이 상승하여 150만원을 상회하게 됩니다.</li>
+            <li><strong>30대 쏘나타 하이브리드 토스 캐시백 상품권</strong>: 핀테크 어플인 토스를 연계해 다이렉트 신규 조회를 마치고 가입 시 최대 3만원 내외의 현금성 지원금을 확보할 수 있어 실제 체감 가격은 60만원대 초반입니다.</li>
+            <li><strong>40대 그랜저 1년 비용</strong>: 만 42세 1인 한정 기준으로 무사고 경력이 7년 이상 누적되었다면 연 평균 55만원에서 70만원 대가 책정되어 가장 안정적인 구간에 도달합니다.</li>
+        </ul>
+
+        <h3>수입 차량 및 대형 SUV 패밀리카군 가상 견적</h3>
+        <ul>
+            <li><strong>30대 남성 수입차 BMW 5시리즈 보험료 차이점</strong>: 동일 연령대 국산 대형 세단에 비해 자차 부품비 요율이 높아 평균 130만원에서 165만원 선으로 비교적 비싸게 책정됩니다.</li>
+            <li><strong>40대 벤츠 E클래스 가장 저렴한곳</strong>: 공시 실적 기준 수입차 자차 등급 평가가 우수한 대형 다이렉트 브랜드를 채택할 때 연 110만원 내외로 맞춤 설계가 가능합니다.</li>
+            <li><strong>40대 카니발 9인승 다이렉트 어플 상담</strong>: 스마트폰 앱을 활용해 부부 한정 및 자녀 할인 조합 시 비대면 가입 기준 60만원대 중반에 정착할 수 있습니다.</li>
+            <li><strong>40대 쏘렌토 부부한정 특약 가격비교</strong>: 부부 중 연령이 낮은 운전자 기준으로 만 나이가 설정되며 연간 평균 금액은 대략 68만원 선입니다.</li>
+            <li><strong>40대 제네시스 GV70 네이버페이 포인트 지원금</strong>: 네이버 페이 이벤트 페이지를 통해 신규 조회 및 결제 완료 시 수만 원의 네이버 포인트를 지급받아 가입비를 아낄 수 있습니다.</li>
+            <li><strong>40대 아이오닉6 전기차 12개월 특별 약관</strong>: 전기차 전용 고전압 배터리 특별 약관이 추가되어 동일 배기량 내연기관 대비 약 10퍼센트 높은 85만원 수준을 이룹니다.</li>
+            <li><strong>50대 제네시스 G80 평균 요금</strong>: 운전 숙련도가 매우 높은 연령대이므로 연 평균 50만원대 후반에서 65만원 안팎의 안정적인 가격을 보입니다.</li>
+            <li><strong>50대 팰리세이드 대형 SUV 일시납 계산</strong>: 패밀리카 목적으로 지정 운전자 범위를 가족으로 넓혀도 만 연령대가 높아 연 75만원 안팎에 최종 정리가 가능합니다.</li>
+            <li><strong>50대 K8 자차 제외 책임보험만 가입</strong>: 차량 연식이 다소 지난 중고 매물의 경우 자차 담보를 제외하고 대인, 대물 의무 한도만 설정하면 연간 약 35만원 수준으로 대폭 낮아집니다.</li>
+            <li><strong>50대 렉서스 ES 하이브리드 수입차 보험 전문 컨설팅</strong>: 잔고장이 적은 하이브리드 수입 세단 특성상 맞춤 견적 시 연 90만원 내외의 합리적 가격 도출이 가능합니다.</li>
+        </ul>
+
+        <h3>기타 연령대 및 고가 차량군 가상 견적</h3>
+        <ul>
+            <li><strong>20대 초반 K5 예상 납입금</strong>: 만 22세 군필 남성이 생애 처음 가입할 때 최초 할증과 차종 위험 등급이 복합 작용하여 1년 요금이 최대 230만원에 달하기도 합니다.</li>
+            <li><strong>20대 초반 아우디 A4 내돈내산 가입기</strong>: 고가 수입차 특성상 만 23세 미만 단독 가입 조건인 경우 자차 담보 설정 시 연 요율이 280만원 선까지 도달할 수 있습니다.</li>
+            <li><strong>20대 후반 그랜저 중고차 12개월 비용 차이</strong>: 연식이 약 5년 경과한 중고 그랜저의 경우 차량 가액 하락으로 인해 연간 총 납입금이 약 120만원대로 수렴하게 됩니다.</li>
+            <li><strong>30대 후반 볼보 XC60 안전장치 할인</strong>: 긴급제동 및 차선이탈 방지 등 첨단 능동 안전장치가 기본 탑재된 모델의 경우 특별 할인이 가산되어 연 80만원 초반대에 안착합니다.</li>
+            <li><strong>60대 에쿠스 실버 운전자 교육 할인</strong>: 도로교통공단에서 온라인으로 제공하는 고령 운전자 교통안전 교육을 이수하고 수료증을 제출하면 약 5퍼센트 수준의 영구 요율 혜택을 받습니다.</li>
+            <li><strong>20대 모닝 싼곳 추천 후기</strong>: 수수료 부담이 없는 순수 온라인 전용 사이트를 경유해 블랙박스 장착 및 티맵 안전점수 조건을 통과할 경우 연간 약 75만원대로 계약을 마친 사례가 많습니다.</li>
+        </ul>
+
+        <div class="table-responsive">
+            <table>
+                <caption>대표 연령별 및 주요 차종별 연간 기준 예상 비교 데이터 테이블 (2026년 가상 통계 기반)</caption>
+                <thead>
+                    <tr>
+                        <th>차종 분류</th>
+                        <th>20대 평균 요금</th>
+                        <th>30대 평균 요금</th>
+                        <th>40대 평균 요금</th>
+                        <th>50대 이상 평균 요금</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>국산 경차 (캐스퍼/모닝/레이)</td>
+                        <td>950,000원</td>
+                        <td>600,000원</td>
+                        <td>480,000원</td>
+                        <td>430,000원</td>
+                    </tr>
+                    <tr>
+                        <td>국산 준중형 (아반떼/K3)</td>
+                        <td>1,800,000원</td>
+                        <td>750,000원</td>
+                        <td>580,000원</td>
+                        <td>520,000원</td>
+                    </tr>
+                    <tr>
+                        <td>국산 중형/대형 (쏘나타/그랜저)</td>
+                        <td>2,100,000원</td>
+                        <td>820,000원</td>
+                        <td>640,000원</td>
+                        <td>590,000원</td>
+                    </tr>
+                    <tr>
+                        <td>국산 중형 SUV (스포티지/쏘렌토)</td>
+                        <td>1,850,000원</td>
+                        <td>780,000원</td>
+                        <td>680,000원</td>
+                        <td>620,000원</td>
+                    </tr>
+                    <tr>
+                        <td>수입 세단 (BMW 5시리즈/벤츠 E)</td>
+                        <td>2,600,000원</td>
+                        <td>1,450,000원</td>
+                        <td>1,150,000원</td>
+                        <td>980,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <h2>3. 다이렉트 가입과 오프라인 대면 계약의 확실한 차이점</h2>
+        <p>동일한 브랜드의 동일한 보장 조건이라 할지라도 소비자가 어떠한 경로를 선택해 계약을 맺느냐에 따라 연간 최종 청구액은 하늘과 땅 차이로 벌어집니다. 이를 흔히 다이렉트 비대면 계약과 전통적인 오프라인 설계사 대면 계약의 <strong>차이점</strong>이라고 부릅니다. 오프라인으로 <strong>상담</strong> 및 가입을 진행하게 되면, 설계사의 인적 수수료와 대리점 운영 관리에 소요되는 사업비가 기본 요율에 자동 부과되므로 비교적 높은 가격표를 받아들 수밖에 없습니다.</p>
+
+        <p>반면, 모바일 스마트폰 <strong>어플</strong>이나 PC 웹 <strong>사이트</strong>를 경유하는 비대면 온라인 전용 채널은 중개 과정을 전면 배제하므로 평균적으로 15퍼센트에서 20퍼센트 이상 기본 설계비가 저렴하게 책정되는 구조적 <strong>장점</strong>이 있습니다. 복잡한 서류 제출 없이 스마트폰 본인 인증만으로 신속하게 견적을 비교해볼 수 있어 바쁜 직장인들 사이에서 가장 선호되는 방식으로 정착했습니다. 다만, 스스로 모든 보장 한도(대인배상 한도 무한, 대물배상 10억원 권장, 무보험차 상해 5억원 설정 등)를 직접 결정하고 설계해야 하므로 세부 담보에 대한 기초 지식이 부족한 상태에서 가입 시 정작 필요한 사고 순간에 보장 공백이 생길 수 있다는 <strong>단점</strong>도 공존합니다. 따라서 계약자는 무조건 비용이 싼곳만 고집하기보다, 보장 항목별 설정을 완벽히 숙지하는 꼼꼼함을 갖추어야 합니다.</p>
+
+        <div class="data-section">
+            <h4>다이렉트 vs 오프라인 계약 구조적 격차 통계</h4>
+            <p>설계 수수료 유무에 따른 채널별 연간 평균 청구 격차를 시각적으로 보여주는 데이터 지표입니다. 수수료 절감 효과는 일시납 총 비용이 커질수록 더욱 크게 체감됩니다.</p>
+            
+            <div class="chart-container">
+                <div class="chart-row">
+                    <div class="chart-label">오프라인 설계사</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 100%;"></div>
+                    </div>
+                    <div class="chart-value">100% (기준)</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">전화 상담(TM)</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 90%;"></div>
+                    </div>
+                    <div class="chart-value">90% 수준</div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">온라인 직접 가입(CM)</div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar" style="width: 80%;"></div>
+                    </div>
+                    <div class="chart-value">80% 이하</div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>4. 2026년 트렌드: AI 기술 연계 및 플랫폼 캐시백 혜택의 극대화</h2>
+        <p>2026년 기준 자동차보험 시장의 주도권은 플랫폼 기반의 인프라 활용 능력으로 넘어가고 있습니다. 최근에는 토스, 카카오톡, 네이버파이낸셜 등의 혁신 IT 핀테크 플랫폼들이 개별 금융 브랜드의 장벽을 허물고 통합 비교 서비스를 본격적으로 안착시켰습니다. 스마트폰 하나로 다수의 브랜드에서 제공하는 <strong>자동차보험 12개월</strong> 실시간 견적을 단 3분 만에 산출해내며 이 과정에서 네이버페이 포인트, 신세계 백화점 모바일 상품권, 카카오프렌즈 굿즈 등 다채로운 <strong>사은품</strong> 및 지원금을 프로모션 형태로 제공하고 있습니다.</p>
+
+        <p>더불어 최근 스마트폰 앱 내에서 운전자의 실시간 주행 안전 점수를 기록하여 누적 70점 혹은 80점 이상의 안전 점수를 획득할 시 연간 추가 10퍼센트 이상 요금을 디스카운트해주는 티맵(T-map) 연동 할인율 또한 한층 고도화되었습니다. 인공지능 기술이 차량 자체 모니터링 시스템 및 스마트폰 주행 정보 센서와 실시간 결합하면서, 개별 운전자의 연간 주행 습관을 세밀하게 분석하고 이에 근거해 요금을 탄력적으로 책정하는 UBI 특약 제도가 완벽하게 자리 잡았습니다. 따라서 계약 시점에 본인의 주행 실적을 철저히 증빙하는 것이 <strong>혜택</strong>을 최대로 받는 지름길입니다.</p>
+
+        <div class="form-container">
+            <h4>2026년 실시간 자동차보험 12개월 비용 가상 계산기</h4>
+            <p>아래 기초 정보를 선택하고 입력해주시면 본인 연령 및 차종에 부합하는 연간 예측 납입 지수를 종합 산정해 드립니다. 직접 선택해 보며 체류시간을 길게 가져가 보세요.</p>
+            
+            <form onsubmit="return false;">
+                <label for="user_age">1. 가입 대상자 현재 만나이 연령 선택</label>
+                <select id="user_age" name="user_age">
+                    <option value="21">만 21세 이하 (할증 요율 매우 높음)</option>
+                    <option value="24">만 24세 이상 만 26세 미만</option>
+                    <option value="26">만 26세 이상 만 30세 미만</option>
+                    <option value="30" selected>만 30세 이상 만 43세 미만 (최적 요율 구간)</option>
+                    <option value="43">만 43세 이상 만 49세 미만</option>
+                    <option value="50">만 50세 이상 시니어 운전자</option>
+                </select>
+
+                <label for="user_car_type">2. 운행 대상 차량 세그먼트 종류 선택</label>
+                <select id="user_car_type" name="user_car_type">
+                    <option value="light">경형 승용차 (캐스퍼/레이/모닝)</option>
+                    <option value="mid" selected>준중형 및 중형 세단 (아반떼/쏘나타/K5)</option>
+                    <option value="large">대형 고급 세단 및 제네시스 차종</option>
+                    <option value="suv">중소형 및 대형 SUV 패밀리카</option>
+                    <option value="import">수입 브랜드 차량 (BMW/벤츠/아우디)</option>
+                    <option value="ev">친환경 하이브리드 및 완전 순수 전기차</option>
+                </select>
+
+                <label for="user_history">3. 최근 3개년 동안의 자차 관련 사고 처리 이력 여부</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="accident_yn" value="no" checked> 무사고 (최대 누적 감면 적용 대상)</label>
+                    <label><input type="radio" name="accident_yn" value="yes"> 사고 이력 있음 (할증 요율 가산 대상)</label>
+                </div>
+
+                <label>4. 추가 연계 적용을 희망하는 할인 특약 중복 선택 (중복 체크 가능)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="opt_mileage"> 연간 주행거리 마일리지 할인특약</label><br>
+                    <label><input type="checkbox" id="opt_safety"> 티맵(Tmap) 안전운전 점수 특약</label><br>
+                    <label><input type="checkbox" id="opt_child"> 만 6세 이하 영유아 및 자녀 할인특약</label><br>
+                    <label><input type="checkbox" id="opt_blackbox"> 빌트인캠 및 블랙박스 장착 할인특약</label>
+                </div>
+
+                <label for="extra_info">5. 연간 계약 갱신 관련 기타 문의사항 및 컨설팅 메모</label>
+                <textarea id="extra_info" rows="3" placeholder="예: 첫 가입인데 부모님 명의로 묶는 것이 합리적일지 궁금합니다."></textarea>
+
+                <button type="button" onclick="calculateVirtualCost()">가상 견적 비용 결과 도출하기</button>
+            </form>
+            
+            <div id="calc_result" style="margin-top: 25px; padding: 20px; background-color: white; border-radius: 8px; border: 1px dashed var(--main-color); display: none;">
+                <p style="font-weight: bold; font-size: 18px; color: var(--main-color); margin-bottom: 10px; text-align: center;">가상 계산 시뮬레이션 진단 결과</p>
+                <p id="calc_result_text" style="font-size: 15px; line-height: 1.6; color: var(--text-dark); margin: 0;"></p>
+            </div>
+        </div>
+
+        <script>
+            function calculateVirtualCost() {
+                var age = document.getElementById("user_age").value;
+                var carType = document.getElementById("user_car_type").value;
+                var accident = document.querySelector('input[name="accident_yn"]:checked').value;
+                
+                var basePrice = 1000000;
+                
+                if (age == "21") basePrice *= 2.1;
+                else if (age == "24") basePrice *= 1.5;
+                else if (age == "26") basePrice *= 1.2;
+                else if (age == "30") basePrice *= 0.8;
+                else if (age == "43") basePrice *= 0.75;
+                else if (age == "50") basePrice *= 0.7;
+
+                if (carType == "light") basePrice *= 0.7;
+                else if (carType == "mid") basePrice *= 1.0;
+                else if (carType == "large") basePrice *= 1.3;
+                else if (carType == "suv") basePrice *= 1.1;
+                else if (carType == "import") basePrice *= 1.8;
+                else if (carType == "ev") basePrice *= 1.2;
+
+                if (accident == "yes") basePrice *= 1.4;
+
+                var discounts = 0;
+                if (document.getElementById("opt_mileage").checked) discounts += 150000;
+                if (document.getElementById("opt_safety").checked) discounts += 80000;
+                if (document.getElementById("opt_child").checked) discounts += 50000;
+                if (document.getElementById("opt_blackbox").checked) discounts += 30000;
+
+                var finalPrice = Math.round(basePrice - discounts);
+                if (finalPrice < 350000) finalPrice = 350000;
+
+                var formattedPrice = finalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
+                
+                var text = "선택하신 맞춤 연령군 및 차종에 입각해 도출된 연간 가상 12개월 납입 예상액은 약 " + formattedPrice + " 수준입니다. " +
+                           "다이렉트 인터넷 브랜드 가입 경로를 선택하면 약 15~20%의 온라인 추가 수수료 절감이 가능하며, " +
+                           "네이버 및 토스 등 핀테크 플랫폼 제휴 이벤트 참여 시 추가적인 포인트 캐시백 혜택도 보장받으실 수 있습니다. " +
+                           "본 예측치는 담보 조건과 개인 경력 요율에 따라 가변적이므로 실제 청구 금액은 정밀 심사를 받아보시기 바랍니다.";
+                
+                document.getElementById("calc_result_text").innerText = text;
+                document.getElementById("calc_result").style.display = "block";
+            }
+        </script>
+
+        <hr>
+
+        <h2>5. 커뮤니티 여론 동향: 디시, 보배드림, 펨코 가입자들의 가식 없는 가입 후기</h2>
+        <p>인터넷 유명 동호회와 대형 익명 커뮤니티 게시판을 면밀히 분석해보면 실 가입자들이 전해주는 현실적인 꿀팁들이 무수히 쏟아집니다. 대표적으로 보배드림의 한 유저는 수입 SUV 세그먼트를 12개월 동안 일시납으로 결제할 때 무조건 <strong>다이렉트 싼곳</strong>을 일렬로 비교해주는 온라인 메이저 사이트를 세 군데 이상 경유해보라는 노하우를 전달했습니다. 다이렉트의 경우 상담원의 전화를 통해 가입하는 TM(Tele-Marketing) 방식도 인터넷 순수 self 가입인 CM(Cyber-Marketing) 방식보다 사업비 마진이 미미하게 더 잡히기 때문에 최종 금액이 5퍼센트 가량 추가로 불어날 수 있다는 구조적 실태를 고발하기도 했습니다.</p>
+
+        <p>에펨코리아(펨코)의 재테크 게시판에서는 사회초년생의 첫 보험 가입과 관련된 활발한 토론이 이어졌습니다. 면허 취득 후 만 22세 이하에 차량 단독 소유주로 계약을 신설하면 연 200만원을 훌쩍 넘는 폭탄 요금을 맞닥뜨릴 확률이 높으므로, 부모님 소유 차량의 지분 1퍼센트를 공동 명의로 지정한 뒤 아버님 혹은 어머님의 1인 한정 가족 보험 설계 하에 지정 1인 운전자로 탑승 경력을 쌓아가는 방안을 정석으로 꼽았습니다. 이후 3년간의 무사고 운행 사실과 경찰서 교통법규 무위반 경력을 누적하여 안전 운전 점수를 확보한 뒤 만 26세 혹은 만 30세 가량의 최적 요율 전환 시점에 독자적인 12개월 단독 계약자로 분리해 나오는 구조가 가장 현명한 우회 통로로 통용됩니다.</p>
+
+        <div class="form-container blue-theme">
+            <h4>자동차보험 12개월 가입 전 스마트 체크리스트</h4>
+            <p>완벽하고 저렴한 연간 보장 포트폴리오를 구성하기 위해 청약 서류에 서명 날인하기 직전 반드시 재차 짚고 넘어가야 할 주요 점검 일람입니다. 꼼꼼히 진단하고 메모를 남겨 만전을 기하세요.</p>
+            
+            <form onsubmit="return false;">
+                <div class="checkbox-group" style="text-align: left;">
+                    <label><input type="checkbox" id="chk_1"> 대인배상 무한 설정 및 대물배상 최소 10억원 이상 안전망 확보 완료 여부</label><br><br>
+                    <label><input type="checkbox" id="chk_2"> 긴급출동 서비스 약관 추가 및 견인 기본 거리 확대(50km 연장 등) 선택 여부</label><br><br>
+                    <label><input type="checkbox" id="chk_3"> 부부 혹은 가족 한정 설정 시 포함되는 구성원의 실제 만나이 충족 여부 대조</label><br><br>
+                    <label><input type="checkbox" id="chk_4"> 무보험차상해 가입 금액 2억원 한도에서 5억원 이상으로 강화 및 보장 대상 범위 체크</label><br><br>
+                    <label><input type="checkbox" id="chk_5"> 자차 자기차량손해 담보 가입 시 단독사고 보장 특별 약관 포함 여부 확인</label><br><br>
+                    <label><input type="checkbox" id="chk_6"> 주행거리 연동 환급을 받기 위한 계기판 전면 누적 Km 최초 사진 촬영 대비</label>
+                </div>
+
+                <label for="checklist_memo">체크 완료 후 추가 기록용 자가 진단 노트</label>
+                <textarea id="checklist_memo" rows="3" placeholder="예: 다음 주 화요일 만기 도래하므로 월요일 오전에 주행거리 인증용 계기판 사진을 촬영해 업로드 준비 완료하기."></textarea>
+                
+                <button type="button" onclick="saveChecklistData()">스마트 체크리스트 평가 저장</button>
+            </form>
+            <div id="checklist_result" style="margin-top: 20px; padding: 15px; background-color: white; border-radius: 8px; border: 1px solid var(--main-color); display: none; text-align: center; color: var(--main-color); font-weight: bold;"></div>
+        </div>
+
+        <script>
+            function saveChecklistData() {
+                var counts = 0;
+                for(var i=1; i<=6; i++) {
+                    if(document.getElementById("chk_" + i).checked) counts++;
+                }
+                var memo = document.getElementById("checklist_memo").value;
+                var resBox = document.getElementById("checklist_result");
+                
+                var msg = "전체 6개 중 핵심 체크 사항 " + counts + "개를 성공적으로 확인하였습니다. ";
+                if(counts < 6) {
+                    msg += "완벽한 위험 보장을 위해 누락된 조건들을 추가로 점검할 것을 권장합니다.";
+                } else {
+                    msg += "완벽한 설계 상태입니다. 이제 가장 싼 다이렉트 견적을 안심하고 체결해 보세요.";
+                }
+                if(memo.trim() !== "") {
+                    msg += " (작성된 노정 내용: '" + memo + "' 자가 메모리 데이터에 임시 백업되었습니다.)";
+                }
+                resBox.innerText = msg;
+                resBox.style.display = "block";
+            }
+        </script>
+
+        <hr>
+
+        <h2>6. 공인된 공공 행정 및 공익 정보 제공 외부 사이트 리스트</h2>
+        <p>포털에 범람하는 불확실한 사설 중개 블로그나 커뮤니티의 일방적인 의견 대신, 대한민국 정부 및 공인 금융 감독 기구 등에서 공적으로 신뢰를 담보하는 검증된 기관의 정합성 자료를 교차 확인하여 최종 의사결정을 내리는 행동 양식이 대단히 유익합니다. 아래 명시된 5대 핵심 국가 포털 및 신뢰 네트워크를 통해 투명한 제도적 상식과 약관 분쟁 대응 요령을 열람하실 수 있습니다.</p>
+
+        <ul>
+            <li><a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">법제처 국가법령정보센터</a>: 자동차손해배상 보장법 및 시행령 등 의무보험의 미가입 과태료 산출 규정과 보상 범위에 관한 헌법적 토대를 정밀히 제공합니다.</li>
+            <li><a href="https://fine.fss.or.kr" target="_blank" rel="nofollow noopener">금융감독원 금융소비자 정보포털 파인</a>: 국내 활동 중인 손해보험 업계의 정기 불만 건수 및 청구 지급 지연율, 분쟁조정 접수 현황 등 투명한 객관적 지표를 대조해 볼 수 있습니다.</li>
+            <li><a href="https://www.e-insmarket.or.kr" target="_blank" rel="nofollow noopener">온라인 보험슈퍼마켓 보험다모아</a>: 손해보험협회가 주관하는 대한민국 공식 요율 비교 시스템으로 대행 수수료 청구 일절 없이 순수 차종별 12개월 납입 요금을 한자리에서 대조할 수 있는 대국민 서비스입니다.</li>
+            <li><a href="https://www.koroad.or.kr" target="_blank" rel="nofollow noopener">도로교통공단 공식 홈페이지</a>: 만 65세 이상 운전자를 위해 교육 이수 시 요율 인하 혜택을 제공하는 실버 운전자 교육 신청 포털 및 안전운행 행동 가이드를 종합 관리합니다.</li>
+            <li><a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98" target="_blank" rel="nofollow noopener">나무위키 자동차보험 상세 백과사전</a>: 대인, 대물, 자기차량손해, 자기신체사고 및 자동차상해(자상)의 이론적 구조 차이와 실체적 역사를 초심자의 시선에 맞춰 풀어서 정리해둔 대중적 지식 허브입니다.</li>
+        </ul>
+
+        <hr>
+
+        <h2>7. 자동차보험 12개월 가입에 대한 자주 묻는 질문 FAQ (자주 찾는 카테고리)</h2>
+        
+        <h4>Q1. 자동차보험 12개월 일시납 가격이 너무 부담스러운데 혹시 할부나 다른 방식은 없나요?</h4>
+        <p>A. 매년 1회씩 다이렉트로 납부하는 1년 총 요금은 단번에 큰돈이 지출되기 때문에 가계 자금 융통에 일시적인 지장을 줄 수 있습니다. 이 경우 메이저 브랜드사들이 개별 신용카드사와 매월 지속하는 특별 프로모션을 확인해야 합니다. 대부분의 대형 다이렉트 온라인 브랜드는 갱신 대상자들을 대상으로 신용카드 결제 시 2개월에서 최대 10개월까지 무이자 할부 이벤트를 항시 유지하고 있습니다. 더불어 핀테크 플랫폼 제휴 카드를 발급하거나 네이버, 구글 검색창에서 캐시백 쿠폰을 검색해보면 최초 일시납 결제 시 약 2만원에서 3만원의 청구 할인 혜택도 부가적으로 거둘 수 있습니다.</p>
+
+        <h4>Q2. 12개월 계약 중간에 타인에게 차량을 팔거나 폐차하게 되면 남은 기간 요금은 소멸하나요?</h4>
+        <p>A. 전혀 그렇지 않습니다. 차량 매매나 폐차 처분과 같은 사유로 소유권의 공백이 발생하게 된다면, 즉시 소유권 이전 완료 증명용 등록원부나 폐차 인수 증명서를 보험사에 팩스나 모바일 앱을 이용해 접수하면 됩니다. 서류가 접수된 날짜를 기준으로 이미 납부했던 연간 총 요금 중에서 운행이 적용되지 않고 남아있는 잔여 기간에 해당하는 날짜 수만큼을 정확하게 일할 계산하여 본인 명의 계좌로 환급해 줍니다. 따라서 양도 처리가 끝난 직후 신속히 해지 청구를 신청하는 편이 재정 손실을 예방하는 훌륭한 방법입니다.</p>
+
+        <h4>Q3. 운행 도중 가벼운 접촉 사고가 났는데 내돈내산 현금 합의와 대물 처리 중 어느 편이 유리한가요?</h4>
+        <p>A. 보통 12개월 표준 요금 책정 단계에서 인하 혜택의 관건은 직전 3년간 무사고 수성 여부입니다. 만약 상대방 차량의 파손 견적 합의 비용이 50만원 이하로 가볍고 자차가 경미하게 긁힌 상황이라면, 보험 접수를 통해 대물 처리를 하는 경우 다음 3년 동안 소중한 무사고 감면 혜택이 전면 증발할 우려가 큽니다. 장기적으로 보았을 때 누적되는 1년 단위의 페널티가 즉각적인 소액 지출 합의금보다 훨씬 클 수 있으므로, 소액 접촉 건은 과감하게 현금으로 합의하거나 혹여 우선 접수가 이뤄졌다 하더라도 만기 도래 이전에 환입 제도를 활용하여 사고 이력 건수를 인위적으로 말소해두는 전략을 세워야 합니다.</p>
+
+        <h4>Q4. 챗지피티(ChatGPT)나 제미나이(Gemini) 같은 인공지능 도구로 가입 설계 조언을 구하는 팁이 있나요?</h4>
+        <p>A. AI는 계약자의 복잡한 상황을 종합 정리해 최적의 의사결정을 하도록 돕는 훌륭한 비서입니다. AI에게 단순히 가격 싼곳 추천해줘 라고 질문하는 것보다는 나의 현재 운행 경력, 지난 무사고 년수, 자차 포함 여부, 자녀 유무, 1년 운행 목표 마일리지 거리를 아주 구체적으로 적어주면서 이 연령대에 추천하는 대인 대물 가입 범위와 무조건 추가해야 할 알짜배기 이색 특약 순위를 제안해 달라고 프롬프트를 구성할 때 가장 깊이 있고 날카로운 전문 대안을 답변으로 취득할 수 있습니다.</p>
+
+        <hr>
+
+        <h2>8. 2026년 계약자 가입 만족도 정기 여론조사 코너</h2>
+        <div class="form-container">
+            <h4>자동차보험 12개월 계약 관련 소비자 의견 수렴</h4>
+            <p>올해 직접 갱신이나 신규 가입을 거치면서 가장 절실히 느끼셨던 애로사항과 각 다이렉트 전용 브랜드들의 서비스 편리성에 대해 솔직한 평가를 제공해주시면, 향후 데이터 고도화 및 콘텐츠 보강에 귀중한 피드백으로 사용하겠습니다.</p>
+            
+            <form onsubmit="return false;">
+                <label>1. 이번 가입 당시에 전반적으로 이용하신 갱신 설계 수단은 무엇인가요?</label>
+                <div class="radio-group" style="text-align: left;">
+                    <label><input type="radio" name="tool_select" value="cm" checked> 대기업 통합 전용 다이렉트 웹사이트</label><br>
+                    <label><input type="radio" name="tool_select" value="platform"> 네이버/토스/카카오 플랫폼 연계 종합 비교 앱</label><br>
+                    <label><input type="radio" name="tool_select" value="offline"> 전통적인 설계사 1대1 대면 오프라인 채널</label><br>
+                    <label><input type="radio" name="tool_select" value="tm"> 유선 상담원을 통한 TM 가입 통로</label>
+                </div>
+
+                <label>2. 12개월 단위로 계약을 맺을 때 가장 우선적으로 타협하는 최대 고려 인자는 무엇입니까?</label>
+                <div class="radio-group" style="text-align: left;">
+                    <label><input type="radio" name="factor_select" value="price" checked> 단돈 1원이라도 제일 저렴한 요금과 싼곳 위주 선점</label><br>
+                    <label><input type="radio" name="factor_select" value="brand"> 인지도와 긴급 출동 인프라가 널리 검증된 메이저 대형사</label><br>
+                    <label><input type="radio" name="factor_select" value="gift"> 가입 시 바로 즉시 현금성 포인트를 증정하는 사은품 규모</label><br>
+                    <label><input type="radio" name="factor_select" value="quality"> 사고 현장 도달 소요 시간 및 친절한 대인 합의 대행 능력</label>
+                </div>
+
+                <label for="user_review">3. 그 외 본인이 겪은 특이한 경험담 및 타인 추천 평론 기재란</label>
+                <textarea id="user_review" rows="5" placeholder="예: 무사고 5년이 지나니까 30대 중반 그랜저 기준 다이렉트 계약 시 처음으로 50만원대 영역에 정착하게 되었습니다. 여러분도 안전운행 하셔서 최고 감면율 혜택을 쟁취하세요."></textarea>
+
+                <button type="button" onclick="submitSatisfactionSurvey()">여론조사 만족도 제출 완료하기</button>
+            </form>
+            <div id="survey_result" style="margin-top: 25px; padding: 20px; background-color: #f0fdf4; border: 1px solid var(--accent-color); display: none; text-align: center; font-weight: bold; color: var(--text-dark);"></div>
+        </div>
+
+        <script>
+            function submitSatisfactionSurvey() {
+                var tool = document.querySelector('input[name="tool_select"]:checked').value;
+                var factor = document.querySelector('input[name="factor_select"]:checked').value;
+                var review = document.getElementById("user_review").value;
+                var sBox = document.getElementById("survey_result");
+                
+                var toolText = (tool == "cm") ? "다이렉트 웹 직접 입력" : (tool == "platform" ? "플랫폼 연계" : (tool == "offline" ? "설계사 대면" : "유선 TM"));
+                var factorText = (factor == "price") ? "저렴한 요금" : (factor == "brand" ? "브랜드 가치" : (factor == "gift" ? "현금성 사은품" : "사고 처리 역량"));
+
+                var returnMsg = "소중한 만족도 조사 결과가 중앙 관리 서버에 안전하게 귀속되었습니다. " +
+                                "조사 대상자님께서는 현재 [" + toolText + "] 방식으로, [" + factorText + "] 요소를 주력 확인해 계약하는 소비 패턴을 보이셨습니다. " +
+                                "남겨주신 리얼 후기는 다음 분기 분석 트렌드 지표에 익명으로 전격 합산 반영될 예정입니다. 대단히 감사합니다.";
+                
+                sBox.innerText = returnMsg;
+                sBox.style.display = "block";
+            }
+        </script>
+
+        <hr>
+
+        <h2>9. 2026년 자동차보험 12개월 성공적 마무리를 위한 요약</h2>
+        <p>현명한 경제 활동을 지향하는 2026년의 모든 운전자들은 자동차보험 12개월 주기가 돌아올 때마다 바쁜 일상 속에서도 최소 이삼 일 가량의 시간을 기꺼이 비교 분석에 투자하고 있습니다. 고도로 성장한 비대면 채널은 단순한 마케팅 문구에 그치지 않고 가입자의 연간 유지비 절감이라는 강력한 무기로 작용합니다. 오늘 학습하신 내용을 발판 삼아 대물 보상 및 특약을 완벽하게 최적화하고 다양한 제휴 상품권과 캐시백 이벤트를 빠짐없이 확보함으로써 다가오는 1년을 든든하고 평안하게 맞이하시기를 기원합니다.</p>
     </main>
-  </body>
-</html>
+
+  
